@@ -1,0 +1,10 @@
+#!ipxe
+
+:retry_dhcp
+dhcp || goto retry_dhcp
+
+:retry_boot
+imgfree
+kernel --timeout 30000 http://172.16.0.1:8088/agent.kernel ipa-inspection-callback-url=http://172.16.0.1:5050/v1/continue systemd.journald.forward_to_console=yes BOOTIF=${net0/mac} initrd=agent.ramdisk || goto retry_boot
+initrd --timeout 30000 http://172.16.0.1:8088/agent.ramdisk || goto retry_boot
+boot

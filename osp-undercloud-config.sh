@@ -1,0 +1,10 @@
+openstack-config --set undercloud.conf DEFAULT local_ip 172.16.0.1/24
+openstack-config --set undercloud.conf DEFAULT undercloud_public_vip  172.16.0.10
+openstack-config --set undercloud.conf DEFAULT undercloud_admin_vip 172.16.0.11
+openstack-config --set undercloud.conf DEFAULT local_interface eth0
+openstack-config --set undercloud.conf DEFAULT masquerade_network 172.16.0.0/24
+openstack-config --set undercloud.conf DEFAULT dhcp_start 172.16.0.20
+openstack-config --set undercloud.conf DEFAULT dhcp_end 172.16.0.120
+openstack-config --set undercloud.conf DEFAULT network_cidr 172.16.0.0/24
+openstack-config --set undercloud.conf DEFAULT network_gateway 172.16.0.1
+openstack-config --set undercloud.conf DEFAULT discovery_iprange 172.16.0.150,172.16.0.180
